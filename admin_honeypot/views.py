@@ -50,5 +50,7 @@ class AdminHoneypot(generic.FormView):
             user_agent=self.request.META.get('HTTP_USER_AGENT'),
             path=self.request.get_full_path(),
         )
+        # Finally, sender does the job to send it, doesn't mention whos the recevier
+        # which I guess is normal, sender is stated as the model
         honeypot.send(sender=LoginAttempt, instance=instance, request=self.request)
         return super(AdminHoneypot, self).form_invalid(form)
