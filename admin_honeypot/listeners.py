@@ -18,6 +18,7 @@ def notify_admins(instance, request, **kwargs):
     }
     subject = render_to_string('admin_honeypot/email_subject.txt', context).strip()
     message = render_to_string('admin_honeypot/email_message.txt', context).strip()
+    # Django method to email site admins as defined in settings.py
     mail_admins(subject=subject, message=message)
 
 # check attribute of settings, if True, register signal to receiver callback function (notify_admins)
